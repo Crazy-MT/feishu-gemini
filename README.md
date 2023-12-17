@@ -8,7 +8,7 @@
 ## 安装
 克隆这个仓库到你的本地机器上：
 ```
-git clone [仓库链接]
+git clone git@github.com:Crazy-MT/feishu-gemini.git
 ```
 
 安装所需依赖：
@@ -27,7 +27,7 @@ ENCRYPT_KEY=飞书机器人事件订阅的 Encrypt Key
 ```
 
 ## 使用
-要使用项目中的特定功能，运行相应的 Python 脚本。例如，要发送飞书消息，运行：
+运行该命令将会监听 60501 端口，可以将服务器地址作为飞书机器人的事件订阅请求地址。
 ```
-python feishu_gemini.py
+python3 feishu_gemini.py
 ```
