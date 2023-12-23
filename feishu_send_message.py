@@ -8,8 +8,18 @@ class FeishuMessenger:
 
     def send_message(self, message_id, message, uuid=""):
         payload = json.dumps({
-            "content": json.dumps({"text": message}),
-            "msg_type": "text",
+            "content": json.dumps({
+                "elements": [
+                    {
+                        "tag": "div",
+                        "text": {
+                            "content": message,
+                            "tag": "lark_md"
+                        }
+                    }
+                ]
+            }),
+            "msg_type": "interactive",
             # "uuid": uuid
         })
 
