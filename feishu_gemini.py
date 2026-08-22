@@ -40,6 +40,10 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def handle_card_action(self, data):
         # 解析 JSON 数据
         parsed_data = json.loads(data)
+        # 若开启了 Encrypt Key，challenge 会被加密在 encrypt 字段中
+        if parsed_data.get('encrypt'):
+            cipher = AESCipher(os.environ.get('ENCRYPT_KEY'))
+            parsed_data = json.loads(cipher.decrypt_string(parsed_data['encrypt']))
         # 提取 challenge 字段
         challenge = parsed_data.get('challenge', '')
         # 构造响应
